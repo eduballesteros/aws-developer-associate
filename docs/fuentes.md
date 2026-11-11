@@ -35,3 +35,7 @@ La página comercial y las notas de la guía muestran discrepancias sobre apertu
 No fijes una reserva basándote en esas notas: confirma versión y fecha en el portal.
 Para febrero de 2027 se prepara C03: desarrollo 30%, seguridad 26%, pruebas/despliegue 22%, diagnóstico/optimización 22%.
 Revisa guía y servicios dentro de alcance antes de reservar. No garantizamos español para cada módulo nuevo.
+
+## Complementos audiovisuales
+La [selección de YouTube](youtube.md) reúne enlaces de creadores independientes, no cursos oficiales.
+Incluye fecha, límites de cobertura y marcas de tiempo publicadas. Cada semana prescribe solo el fragmento necesario.

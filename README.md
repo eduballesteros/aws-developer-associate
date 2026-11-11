@@ -65,7 +65,7 @@ Las herramientas de nube —AWS CLI y SAM CLI— se preparan cuando llegues al d
 | [09](semanas/09.md)–[10](semanas/10.md) | Observabilidad, optimización e IA | Diagnóstico con evidencias y revisión de cobertura |
 | [11](semanas/11.md)–[12](semanas/12.md) | Simulacros y refuerzo | Decisión de presentarse basada en resultados |
 
-El [roadmap detallado](docs/roadmap.md) incluye objetivos, temas, práctica, recursos, horas y criterios de avance por semana.
+El [roadmap detallado](docs/roadmap.md) enlaza cuatro sesiones de una hora por semana: qué ver, qué leer, qué practicar y qué entregar. Consulta los [vídeos seleccionados y sus límites](docs/youtube.md), y utiliza la [plantilla de evidencia semanal](seguimiento/plantilla-semanal.md) para registrar resultados.
 
 ### Una rutina que cabe en cuatro horas
 

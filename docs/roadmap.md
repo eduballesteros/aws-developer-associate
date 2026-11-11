@@ -1,22 +1,41 @@
-# Roadmap · 12 semanas / 48 horas
-Fecha objetivo orientativa: febrero de 2027. Si empiezas después, desplaza el calendario; no comprimas los repasos.
-Recursos oficiales y condiciones en [fuentes](fuentes.md). Los criterios son educativos, no promesa de aprobar.
+# Roadmap de acciones · 12 semanas / 48 horas
+Perfil: Java intermedio, AWS desde cero, español, 4 h/semana y laboratorios hasta 10 € en total.
+Objetivo orientativo: febrero de 2027; no reservar por calendario si falta preparación.
+Si comienzas después, desplaza semanas sin comprimir repasos.
+
+**Cada enlace de semana abre las cuatro sesiones y la entrega concreta.**
+Vídeos: [selección, marcas de tiempo y límites](youtube.md). Alcance del examen: [fuentes oficiales](fuentes.md).
 
 | Semana | Objetivo | Temas | Práctica | Recursos | Horas | Criterio de avance |
 |---|---|---|---|---|---:|---|
-| [1](../semanas/01.md) | Fundamentos y acceso | Regiones/AZ; responsabilidad compartida; roles, políticas y MFA; facturación | Preparar JDK/Maven/Git. Activar MFA, revisar presupuesto y configurar perfil temporal. Sin cuenta: dibujar responsabilidades. | Skill Builder: fundamentos de nube e IAM; docs/00-inicio.md; docs/costes.md | 4 | Explicas región/AZ y usas identidad distinta de root. |
-| [2](../semanas/02.md) | SDK y almacenamiento | SDK Java v2; cadena de credenciales; S3; URLs prefirmadas; reintentos | Escribir con el SDK una subida de texto ficticio a un bucket privado, leerlo y generar URL de 60 s. Borrar objeto y bucket al terminar. Local: simular el cliente. | SDK Java y S3 en docs/fuentes.md | 4 | Código sin claves; explicas duración y alcance de la URL. |
-| [3](../semanas/03.md) | API y Lambda | Handler/eventos; API Gateway; JSON; timeout/memoria; invocación síncrona | Compilar la base de proyecto. Ejecutar tests. Leer evento HTTP API v2; desplegar solo tras revisar costes. Explicar POST y GET. | proyecto/README.md; SAM en español | 4 | Distingues errores de validación de fallos internos y describes el flujo HTTP. |
-| [4](../semanas/04.md) | DynamoDB | PK/SK; Query frente a Scan; consistencia; índices; escrituras condicionales; TTL | Crear una tarea con ID fijo, repetirla y observar 409. Listar con límite y paginación. Comparar consistencia eventual y fuerte en tabla. | proyecto y documentación DynamoDB | 4 | Repetir una escritura no sobrescribe silenciosamente; explicas acceso por usuario. |
-| [5](../semanas/05.md) | Autenticación y autorización | Cognito/JWT; STS; federación; políticas de recurso e identidad | Con dos usuarios ficticios, crear tareas y comprobar aislamiento. Enviar sin token, token caducado y token válido. No registrar tokens. | proyecto/README.md; notas/02-seguridad.md | 4 | El usuario B no ve datos de A; distingues autenticación y autorización. |
-| [6](../semanas/06.md) | Cifrado y secretos | TLS; KMS; SSE y cifrado cliente; certificados; Parameter Store/Secrets Manager | Auditar logs y configuración. Escribir política mínima de lectura de secreto y explicar permisos KMS. No crear Private CA. Usar secreto ficticio. | notas/02-seguridad.md | 4 | Puedes separar permiso del servicio y de la clave; no hay secretos en Git. |
-| [7](../semanas/07.md) | Eventos y resiliencia | SQS Standard/FIFO; SNS; EventBridge; DLQ; backoff/jitter; streaming | Completar reto SQS del proyecto: consumidor, repetición del mismo mensaje y fallo persistente. Local: simular entregas. Nube opcional y breve. | proyecto/RETOS.md; notas/01-desarrollo.md | 4 | Demuestras idempotencia; explicas visibilidad, reintentos y redrive. |
-| [8](../semanas/08.md) | Tests y despliegue | SAM/CloudFormation; alias/versiones; CodeBuild/CodePipeline/CodeDeploy; canary y rollback; contenedores | Ejecutar buildspec localmente con Maven. Usar una canalización de ejemplo si presupuesto permite; estudiar sus fases si no. Romper un test y revertir código. | proyecto/buildspec.yml; notas/03-despliegue.md | 4 | Explicas build/test/deploy y cómo un fallo detiene una revisión. |
-| [9](../semanas/09.md) | Observabilidad y rendimiento | Logs/métricas/trazas; CloudWatch; alarmas; timeout; concurrencia; caché | Diagnosticar un permiso retirado y un timeout en entorno de prueba. Comparar 512/1024 MB con pocas llamadas; guardar latencia y coste estimado. | proyecto/RETOS.md; notas/04-diagnostico.md | 4 | Identificas causa con evidencias y ocultas datos sensibles. |
-| [10](../semanas/10.md) | IA y cierre de cobertura | Asistencia de código/tests; servicios de IA; privacidad; autorización de herramientas; contenedores y caché | Revisar sugerencia de código y tests de IA con datos ficticios. Diseñar cliente gestionado con mock. Completar matriz de cobertura, incluyendo temas sin laboratorio. | docs/cobertura.md; proyecto/RETOS.md | 4 | Detectas filtración de secretos/prompt injection y verificas salidas antes de actuar. |
-| [11](../semanas/11.md) | Primer diagnóstico completo | Simulacro y refuerzo por dominio | 65 preguntas nuevas en 130 min si tienes acceso legítimo. 110 min para analizar errores. Mini-test A solo sirve como calentamiento. | practica/mini-tests.md; seguimiento/simulacros.md | 4 | Registro de errores y plan concreto para el dominio más débil. |
-| [12](../semanas/12.md) | Evaluación final | Segundo simulacro; repaso; explicar proyecto; logística | Otro test nuevo en 130 min, 80 min revisión, 30 min explicación del proyecto. Aplicar checklist y decidir ampliar o reservar. | docs/examen.md | 4 | Dos resultados consistentes más demostración práctica; si no, ampliar. |
+| [01](../semanas/01.md) | Cuenta segura y fundamentos | Regiones, IAM, MFA y presupuesto | Preparar equipo, cuenta y alertas | [V1](youtube.md) + guía de semana | 4 | Explicas región/AZ y rol frente a usuario; sabes qué cuenta y región usarás y cómo te enterarás del gasto. |
+| [02](../semanas/02.md) | SDK Java y S3 | SDK, credenciales, objetos y URLs firmadas | Ejemplo S3 o mock etiquetado | [V1](youtube.md) + guía de semana | 4 | No hay claves en el repositorio y distingues identidad, permiso del objeto y expiración de la URL. |
+| [03](../semanas/03.md) | Primera ejecución del proyecto y flujo HTTP | Eventos, HTTP y validación | Compilar Java y añadir un caso de prueba | [V2](youtube.md) + guía de semana | 4 | Puedes localizar la validación, justificar errores y distinguir pruebas locales de pruebas de integración. |
+| [04](../semanas/04.md) | DynamoDB y protección frente a duplicados | Claves, Query, consistencia, índices y TTL | Modelar 21 tareas y preparar casos | [V2](youtube.md) + guía de semana | 4 | Justificas el patrón de acceso y por qué el cursor no debe permitir cambiar el usuario de la consulta. |
+| [05](../semanas/05.md) | Autenticación y prueba de dos usuarios | Cognito, JWT y autorización | Probar sin token y con usuarios A/B | [V4](youtube.md) + guía de semana | 4 | Demuestras aislamiento entre usuarios y sabes dónde se valida el JWT y dónde se aplica autorización sobre datos. |
+| [06](../semanas/06.md) | Cifrado, secretos y permisos | TLS, KMS, secretos y datos sensibles | Revisar logs y política ficticia | [V4](youtube.md) + guía de semana | 4 | Distingues permiso del servicio y de clave, y puedes justificar cómo proteger configuración y logs. |
+| [07](../semanas/07.md) | Colas, reintentos e idempotencia | SQS/SNS/EventBridge, reintentos y DLQ | Simular entregas repetidas y fallos | Documentación oficial + guía de semana | 4 | Puedes explicar la recuperación y demostrar que el identificador repetido no duplica efectos en tu simulación. |
+| [08](../semanas/08.md) | SAM, tests y automatización | IaC, artefactos, canalizaciones y rollback | Romper/restaurar un test y diseñar fases | [V5](youtube.md) + guía de semana | 4 | Distingues build, pruebas, promoción y despliegue; puedes explicar canary/blue-green/rolling y rollback. |
+| [09](../semanas/09.md) | Diagnosticar con logs y métricas | Logs, métricas, alarmas y rendimiento | Investigar un incidente y proponer alarma | [V2](youtube.md) + guía de semana | 4 | Usas evidencias para distinguir permiso, latencia y límites; no guardas datos sensibles en logs. |
+| [10](../semanas/10.md) | IA segura y revisión del alcance | Asistencia de IA, privacidad, contenedores y cobertura | Fake IA, casos límite y matriz de lagunas | Documentación oficial + guía de semana | 4 | Puedes revisar salida de IA y limitar datos/acciones; sabes qué contenidos del alcance sigues sin dominar. |
+| [11](../semanas/11.md) | Diagnóstico de preparación | Simulacro y errores por dominio | 130 min evaluación, 80 corrección, 30 plan | Fuente legítima nueva; alternativa formativa si no hay acceso | 4 | Errores explicados y refuerzo definido |
+| [12](../semanas/12.md) | Decidir siguiente paso | Segunda evaluación y demostración | 130 min evaluación, 60 revisión, 50 explicación/checklist | Otro simulacro nuevo + proyecto | 4 | Resultados consistentes y conceptos aplicados, o ampliación |
 
-Prioridad de práctica: Lambda/API Gateway/DynamoDB/IAM, después eventos, despliegue y observabilidad. Esta prioridad es pedagógica; AWS no publica pesos individuales por servicio.
+## Sesiones y presupuesto de tiempo
+Semanas 1–10: sesión 1=60 min teoría; sesión 2=60 min práctica; sesión 3=30 práctica+30 preguntas;
+sesión 4=15 corrección+45 repaso/registro. Total semanal exacto: 240 min.
+Reparte parte del repaso al día siguiente (+1) y recupera conceptos de +7/+21 días sin añadir horas.
 
-Rutina normal: 60 min teoría, 90 práctica, 45 preguntas, 45 repaso. Repasar a 1, 7 y 21 días. No crear recursos caros para cubrir conceptos.
+**Mínimo y ampliaciones:** mínimo es la entrega semanal. SQS real, canalización completa, canary,
+alarmas/trazas reales y comparación de memoria son ampliaciones si no caben. Las habilidades que
+solo hayas simulado se marcan como tales; usa cobertura para decidir refuerzo.
+El laboratorio integrado se despliega y prueba en semana 5, con presupuesto preparado;
+antes se estudian y prueban componentes localmente. Eliminar y recrear, no dejar recursos entre semanas.
+
+Si una configuración consume el tiempo de práctica, termina la sesión, registra el bloqueo y
+amplía esa semana. No sustituyas práctica por ver más vídeos.
+
+## Evaluación y recursos de pago
+No se garantiza un simulacro completo gratuito en español. Los mini-tests locales no sustituyen dos
+muestras nuevas. Semanas 11–12 incluyen una alternativa formativa y dejan visible esa limitación.
+No se compra ni se despliega nada automáticamente. [Criterios de reserva](examen.md).
