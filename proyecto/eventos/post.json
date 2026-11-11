@@ -1,0 +1,17 @@
+{
+  "version": "2.0",
+  "requestContext": {
+    "http": {
+      "method": "POST"
+    },
+    "authorizer": {
+      "jwt": {
+        "claims": {
+          "sub": "usuario-ficticio"
+        }
+      }
+    }
+  },
+  "body": "{\"id\":\"123e4567-e89b-12d3-a456-426614174000\",\"titulo\":\"Estudiar IAM\"}",
+  "isBase64Encoded": false
+}

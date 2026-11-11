@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "domain": 1,
+    "question": "Una Lambda escribe en una tabla. ¿Cómo obtiene permisos?",
+    "options": [
+      "Claves root en variables  ",
+      "Rol de ejecución limitado a la tabla  ",
+      "Tabla pública"
+    ],
+    "answer": 1,
+    "explanation": "El rol entrega credenciales temporales. Root es excesivo y una tabla pública no resuelve la autorización."
+  },
+  {
+    "id": 2,
+    "domain": 1,
+    "question": "Necesitas listar tareas de un usuario con PK conocida. ¿Qué operación?",
+    "options": [
+      "Scan y filtro siempre  ",
+      "Query por partición  ",
+      "Exportar toda la tabla"
+    ],
+    "answer": 1,
+    "explanation": "Query usa la clave. Un filtro tras Scan no evita leer el conjunto recorrido; exportar no responde a la consulta interactiva."
+  },
+  {
+    "id": 3,
+    "domain": 1,
+    "question": "Se entrega dos veces un mensaje que genera un cargo. ¿Qué protege?",
+    "options": [
+      "Solo FIFO  ",
+      "Solo más memoria  ",
+      "Idempotencia con identificador persistente"
+    ],
+    "answer": 2,
+    "explanation": "La deduplicación de transporte no garantiza efectos externos únicos. El consumidor debe reconocer la operación ya aplicada."
+  },
+  {
+    "id": 4,
+    "domain": 1,
+    "question": "Dos consumidores fallan y reintentan a la vez. ¿Qué reduce la sincronización?",
+    "options": [
+      "Backoff exponencial con jitter  ",
+      "Reintento inmediato infinito  ",
+      "Suprimir todos los errores"
+    ],
+    "answer": 0,
+    "explanation": "El jitter dispersa reintentos. El bucle inmediato agrava carga; ocultar errores pierde fiabilidad."
+  },
+  {
+    "id": 5,
+    "domain": 1,
+    "question": "Necesitas distribuir un evento a varias colas. ¿Qué patrón?",
+    "options": [
+      "Una cola con consumidores que esperan todos recibirlo  ",
+      "SNS con suscripciones SQS  ",
+      "Guardar el evento solo en logs"
+    ],
+    "answer": 1,
+    "explanation": "SNS hace fan-out a colas; consumidores de una misma cola se reparten trabajo, no reciben todos una copia."
+  },
+  {
+    "id": 6,
+    "domain": 1,
+    "question": "Un asistente genera código y tests que pasan. ¿Qué concluyes?",
+    "options": [
+      "Requisitos y seguridad aún necesitan revisión independiente  ",
+      "El código ya es seguro  ",
+      "No hacen falta casos límite"
+    ],
+    "answer": 0,
+    "explanation": "Código y tests pueden compartir supuestos erróneos. Pasar tests no demuestra seguridad ni cobertura de requisitos."
+  },
+  {
+    "id": 7,
+    "domain": 2,
+    "question": "Allow y Deny explícito aplicables a la misma acción. ¿Resultado?",
+    "options": [
+      "Gana Allow  ",
+      "Se alternan  ",
+      "Gana Deny"
+    ],
+    "answer": 2,
+    "explanation": "Deny explícito aplicable prevalece. Hay que revisar además otras capas de autorización."
+  },
+  {
+    "id": 8,
+    "domain": 2,
+    "question": "El body contiene userId de otro usuario. ¿Qué debe usar la API?",
+    "options": [
+      "Ese campo sin verificar  ",
+      "Identidad del JWT verificado y autorización  ",
+      "Un usuario fijo global"
+    ],
+    "answer": 1,
+    "explanation": "La identidad de cliente no es confiable por sí sola. El token debe validarse y cada acceso limitarse al propietario."
+  },
+  {
+    "id": 9,
+    "domain": 2,
+    "question": "Un tercero necesita descargar un objeto privado durante poco tiempo. ¿Opción?",
+    "options": [
+      "URL prefirmada de operación limitada  ",
+      "Bucket público permanente  ",
+      "Enviar clave del firmante"
+    ],
+    "answer": 0,
+    "explanation": "La URL limita tiempo y operación; no hay que entregar credenciales ni hacer público el bucket."
+  },
+  {
+    "id": 10,
+    "domain": 2,
+    "question": "Leer un secreto cifrado falla pese a permiso del servicio. ¿Qué revisar?",
+    "options": [
+      "Solo nombre del archivo Java  ",
+      "Permisos/política de clave KMS si corresponde  ",
+      "Cambiar a root como solución permanente"
+    ],
+    "answer": 1,
+    "explanation": "El servicio y la clave pueden tener controles distintos. Root no es una corrección de mínimo privilegio."
+  },
+  {
+    "id": 11,
+    "domain": 2,
+    "question": "El modelo solicita ejecutar una operación sensible sin permiso del usuario. ¿Qué haces?",
+    "options": [
+      "Ejecutarla por confianza en el modelo  ",
+      "Dar privilegios administrativos  ",
+      "Validar autorización fuera del modelo y exigir revisión si procede"
+    ],
+    "answer": 2,
+    "explanation": "La salida del modelo no concede derechos. Limitar herramientas y sesiones reduce el impacto de instrucciones maliciosas."
+  },
+  {
+    "id": 12,
+    "domain": 2,
+    "question": "Un log de interacción IA contiene datos personales. ¿Acción adecuada?",
+    "options": [
+      "Minimizar/redactar y restringir acceso/retención  ",
+      "Copiarlo a un prompt público  ",
+      "Solo cambiar el nombre de la función"
+    ],
+    "answer": 0,
+    "explanation": "Protege el contenido antes de registrarlo. Renombrar no evita exposición; compartirlo agrava el problema."
+  },
+  {
+    "id": 13,
+    "domain": 3,
+    "question": "Quieres que un alias apunte a una revisión estable de Lambda. ¿Qué usar?",
+    "options": [
+      "Siempre $LATEST mutable  ",
+      "Versión publicada  ",
+      "Solo rama Git sin desplegar"
+    ],
+    "answer": 1,
+    "explanation": "Una versión publicada es una revisión inmutable. Git por sí solo no cambia el destino desplegado."
+  },
+  {
+    "id": 14,
+    "domain": 3,
+    "question": "¿Qué servicio orquesta fases de una canalización?",
+    "options": [
+      "CodePipeline  ",
+      "DynamoDB  ",
+      "Cognito"
+    ],
+    "answer": 0,
+    "explanation": "CodePipeline coordina fases; CodeBuild ejecuta construcción/pruebas. Los otros servicios no son orquestadores CI/CD."
+  },
+  {
+    "id": 15,
+    "domain": 3,
+    "question": "¿Qué debe ocurrir cuando falla una prueba requerida?",
+    "options": [
+      "Desplegar igualmente  ",
+      "Ignorar salida  ",
+      "Bloquear promoción de esa revisión"
+    ],
+    "answer": 2,
+    "explanation": "Una fase de validación debe impedir promover una revisión inválida; ignorarla elimina su utilidad."
+  },
+  {
+    "id": 16,
+    "domain": 3,
+    "question": "Una revisión recibe primero 10% del tráfico para observar errores. ¿Estrategia?",
+    "options": [
+      "Canary  ",
+      "Despliegue total inmediato  ",
+      "Scan"
+    ],
+    "answer": 0,
+    "explanation": "Canary desplaza una fracción antes de completar. Scan es operación de datos, no estrategia de despliegue."
+  },
+  {
+    "id": 17,
+    "domain": 3,
+    "question": "¿Dónde guardas configuración distinta por entorno?",
+    "options": [
+      "Secretos incrustados en imagen  ",
+      "Configuración externa controlada por entorno  ",
+      "En comentarios Java públicos"
+    ],
+    "answer": 1,
+    "explanation": "Separar configuración facilita seguridad y promoción del mismo artefacto. Los secretos no deben estar en imagen/código."
+  },
+  {
+    "id": 18,
+    "domain": 3,
+    "question": "¿Qué diferencia ECR y ECS?",
+    "options": [
+      "Ambos son bases SQL  ",
+      "ECR gestiona JWT  ",
+      "ECR almacena imágenes y ECS orquesta tareas"
+    ],
+    "answer": 2,
+    "explanation": "Son funciones diferentes: registro y orquestación. JWT corresponde a identidad, no al registro de imágenes."
+  },
+  {
+    "id": 19,
+    "domain": 4,
+    "question": "La API devuelve 500 desde el último despliegue. ¿Primer enfoque?",
+    "options": [
+      "Aumentar todos los límites  ",
+      "Correlacionar errores y cambios con logs/métricas  ",
+      "Borrar logs"
+    ],
+    "answer": 1,
+    "explanation": "Busca evidencia y cambios antes de modificar recursos; borrar logs impide investigar."
+  },
+  {
+    "id": 20,
+    "domain": 4,
+    "question": "Una Lambda tarda menos con más memoria. ¿Es siempre más cara?",
+    "options": [
+      "No: comparar duración, recursos y precio  ",
+      "Sí siempre  ",
+      "No tiene coste de cómputo"
+    ],
+    "answer": 0,
+    "explanation": "El coste depende de recursos y duración, entre otros factores. Hay que medir, no inferir solo por memoria."
+  },
+  {
+    "id": 21,
+    "domain": 4,
+    "question": "Suben reintentos y entregas a DLQ. ¿Qué hacer?",
+    "options": [
+      "Redrive inmediato sin corregir  ",
+      "Eliminar DLQ  ",
+      "Investigar causa y validar corrección antes del redrive"
+    ],
+    "answer": 2,
+    "explanation": "Reinyectar sin corregir repite el fallo y puede duplicar efectos. DLQ preserva información para recuperación."
+  },
+  {
+    "id": 22,
+    "domain": 4,
+    "question": "Necesitas seguir una solicitud entre servicios. ¿Qué aporta más contexto?",
+    "options": [
+      "Traza distribuida correlacionada  ",
+      "Solo un contador total  ",
+      "Nombre del bucket"
+    ],
+    "answer": 0,
+    "explanation": "Las trazas muestran recorrido y latencias; una métrica agregada no reconstruye por sí sola la solicitud."
+  },
+  {
+    "id": 23,
+    "domain": 4,
+    "question": "Quieres alerta cuando aumentan errores. ¿Qué combinas?",
+    "options": [
+      "TTL e índice  ",
+      "Métrica, umbral/alarma y canal de notificación  ",
+      "Más comentarios en código"
+    ],
+    "answer": 1,
+    "explanation": "Se necesita condición observable y notificación. TTL e índices no sustituyen alarmas."
+  },
+  {
+    "id": 24,
+    "domain": 4,
+    "question": "La IA sugiere aumentar timeout por un fallo. ¿Cómo actuar?",
+    "options": [
+      "Aplicarlo sin medir  ",
+      "Dar acceso total al asistente  ",
+      "Verificar logs, dependencias y causa antes de cambiar"
+    ],
+    "answer": 2,
+    "explanation": "La recomendación es hipótesis. Verificar evita ocultar problemas de red, permisos o rendimiento."
+  }
+]

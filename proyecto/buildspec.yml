@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+  build:
+    commands:
+      - mvn -B clean verify
+artifacts:
+  files:
+    - target/tareas-1.0.0.jar
+# Solo build y tests; no crea ni configura una canalizacion de despliegue.

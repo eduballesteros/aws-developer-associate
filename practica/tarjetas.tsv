@@ -1,0 +1,25 @@
+Pregunta	Respuesta	Dominio
+Una Lambda escribe en una tabla. ¿Cómo obtiene permisos?	Rol de ejecución limitado a la tabla. El rol entrega credenciales temporales. Root es excesivo y una tabla pública no resuelve la autorización.	D1
+Necesitas listar tareas de un usuario con PK conocida. ¿Qué operación?	Query por partición. Query usa la clave. Un filtro tras Scan no evita leer el conjunto recorrido; exportar no responde a la consulta interactiva.	D1
+Se entrega dos veces un mensaje que genera un cargo. ¿Qué protege?	Idempotencia con identificador persistente. La deduplicación de transporte no garantiza efectos externos únicos. El consumidor debe reconocer la operación ya aplicada.	D1
+Dos consumidores fallan y reintentan a la vez. ¿Qué reduce la sincronización?	Backoff exponencial con jitter. El jitter dispersa reintentos. El bucle inmediato agrava carga; ocultar errores pierde fiabilidad.	D1
+Necesitas distribuir un evento a varias colas. ¿Qué patrón?	SNS con suscripciones SQS. SNS hace fan-out a colas; consumidores de una misma cola se reparten trabajo, no reciben todos una copia.	D1
+Un asistente genera código y tests que pasan. ¿Qué concluyes?	Requisitos y seguridad aún necesitan revisión independiente. Código y tests pueden compartir supuestos erróneos. Pasar tests no demuestra seguridad ni cobertura de requisitos.	D1
+Allow y Deny explícito aplicables a la misma acción. ¿Resultado?	Gana Deny. Deny explícito aplicable prevalece. Hay que revisar además otras capas de autorización.	D2
+El body contiene userId de otro usuario. ¿Qué debe usar la API?	Identidad del JWT verificado y autorización. La identidad de cliente no es confiable por sí sola. El token debe validarse y cada acceso limitarse al propietario.	D2
+Un tercero necesita descargar un objeto privado durante poco tiempo. ¿Opción?	URL prefirmada de operación limitada. La URL limita tiempo y operación; no hay que entregar credenciales ni hacer público el bucket.	D2
+Leer un secreto cifrado falla pese a permiso del servicio. ¿Qué revisar?	Permisos/política de clave KMS si corresponde. El servicio y la clave pueden tener controles distintos. Root no es una corrección de mínimo privilegio.	D2
+El modelo solicita ejecutar una operación sensible sin permiso del usuario. ¿Qué haces?	Validar autorización fuera del modelo y exigir revisión si procede. La salida del modelo no concede derechos. Limitar herramientas y sesiones reduce el impacto de instrucciones maliciosas.	D2
+Un log de interacción IA contiene datos personales. ¿Acción adecuada?	Minimizar/redactar y restringir acceso/retención. Protege el contenido antes de registrarlo. Renombrar no evita exposición; compartirlo agrava el problema.	D2
+Quieres que un alias apunte a una revisión estable de Lambda. ¿Qué usar?	Versión publicada. Una versión publicada es una revisión inmutable. Git por sí solo no cambia el destino desplegado.	D3
+¿Qué servicio orquesta fases de una canalización?	CodePipeline. CodePipeline coordina fases; CodeBuild ejecuta construcción/pruebas. Los otros servicios no son orquestadores CI/CD.	D3
+¿Qué debe ocurrir cuando falla una prueba requerida?	Bloquear promoción de esa revisión. Una fase de validación debe impedir promover una revisión inválida; ignorarla elimina su utilidad.	D3
+Una revisión recibe primero 10% del tráfico para observar errores. ¿Estrategia?	Canary. Canary desplaza una fracción antes de completar. Scan es operación de datos, no estrategia de despliegue.	D3
+¿Dónde guardas configuración distinta por entorno?	Configuración externa controlada por entorno. Separar configuración facilita seguridad y promoción del mismo artefacto. Los secretos no deben estar en imagen/código.	D3
+¿Qué diferencia ECR y ECS?	ECR almacena imágenes y ECS orquesta tareas. Son funciones diferentes: registro y orquestación. JWT corresponde a identidad, no al registro de imágenes.	D3
+La API devuelve 500 desde el último despliegue. ¿Primer enfoque?	Correlacionar errores y cambios con logs/métricas. Busca evidencia y cambios antes de modificar recursos; borrar logs impide investigar.	D4
+Una Lambda tarda menos con más memoria. ¿Es siempre más cara?	No: comparar duración, recursos y precio. El coste depende de recursos y duración, entre otros factores. Hay que medir, no inferir solo por memoria.	D4
+Suben reintentos y entregas a DLQ. ¿Qué hacer?	Investigar causa y validar corrección antes del redrive. Reinyectar sin corregir repite el fallo y puede duplicar efectos. DLQ preserva información para recuperación.	D4
+Necesitas seguir una solicitud entre servicios. ¿Qué aporta más contexto?	Traza distribuida correlacionada. Las trazas muestran recorrido y latencias; una métrica agregada no reconstruye por sí sola la solicitud.	D4
+Quieres alerta cuando aumentan errores. ¿Qué combinas?	Métrica, umbral/alarma y canal de notificación. Se necesita condición observable y notificación. TTL e índices no sustituyen alarmas.	D4
+La IA sugiere aumentar timeout por un fallo. ¿Cómo actuar?	Verificar logs, dependencias y causa antes de cambiar. La recomendación es hipótesis. Verificar evita ocultar problemas de red, permisos o rendimiento.	D4
